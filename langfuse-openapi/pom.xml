@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.kuga</groupId>
+        <artifactId>langchain4j-langfuse</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <description>Compile Langfuse OpenAPI Doc</description>
+
+    <artifactId>langfuse-openapi</artifactId>
+    <packaging>jar</packaging>
+
+    <name>langfuse-openapi</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.8.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/openapi.yaml</inputSpec>
+                            <generatorName>java</generatorName>
+                            <output>${project.basedir}/../langfuse-client</output>
+                            <apiPackage>com.kuga.langfuse.client.api</apiPackage>
+                            <modelPackage>com.kuga.langfuse.client.model</modelPackage>
+                            <invokerPackage>com.kuga.langfuse.client.invoker</invokerPackage>
+                            <configOptions>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <parentArtifactId>langchain4j-langfuse</parentArtifactId>
+                                <parentGroupId>com.kuga</parentGroupId>
+                                <version>${version}</version>
+                                <artifactId>langfuse-client</artifactId>
+                                <groupId>com.kuga</groupId>
+                                <artifactVersion>${version}</artifactVersion>
+                                <disallowAdditionalPropertiesIfNotPresent>false
+                                </disallowAdditionalPropertiesIfNotPresent>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
