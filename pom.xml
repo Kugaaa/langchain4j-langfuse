@@ -9,6 +9,8 @@
         <module>langfuse-client</module>
         <module>langfuse-highlevel-client</module>
         <module>langfuse-examples</module>
+        <module>langfuse-agent</module>
+        <module>langfuse-core</module>
     </modules>
     <version>1.0.0-SNAPSHOT</version>
 
